@@ -347,11 +347,10 @@ useEffect(() => {
         </div>
       </section>
 
-      {/* ================= PRICING ================= */}
-      <section id="pricing" className="px-6 md:px-16 py-28 bg-gradient-to-b from-white to-blue-50/40">
+     {/* ================= PRICING ================= */}
+<section id="pricing" className="px-6 md:px-16 py-28 bg-gradient-to-b from-white to-blue-50/40">
   <div className="max-w-7xl mx-auto text-center">
 
-    {/* Heading */}
     <h2 className="text-3xl md:text-4xl font-semibold">
       Simple, Transparent Pricing
     </h2>
@@ -359,20 +358,20 @@ useEffect(() => {
       Choose the plan that fits your growth stage
     </p>
 
-    {/* Cards */}
-    <div className="grid md:grid-cols-3 gap-8 mt-20">
+    <div className="grid md:grid-cols-3 gap-8 mt-20 items-stretch">
 
       {/* BASIC */}
-      <div className="p-8 rounded-2xl border bg-white hover:shadow-xl transition duration-300">
+      <div className="p-8 rounded-2xl border bg-white hover:shadow-xl transition flex flex-col">
         <h3 className="text-xl font-semibold">Basic</h3>
 
         <p className="mt-4 text-3xl font-bold">₹999</p>
         <p className="text-sm text-gray-500">Starter plan</p>
 
-        <ul className="mt-6 space-y-3 text-sm text-gray-600">
+        <ul className="mt-6 space-y-3 text-sm text-gray-600 flex-1">
           <li>✔ Instagram Automation</li>
           <li>✔ Comment → DM</li>
           <li>✔ Custom Replies</li>
+          <li>✔ Basic Lead Capture</li>
         </ul>
 
         <button className="mt-8 w-full py-3 rounded-xl border hover:bg-gray-100 transition">
@@ -380,10 +379,9 @@ useEffect(() => {
         </button>
       </div>
 
-      {/* PRO (HIGHLIGHTED) */}
-      <div className="relative p-8 rounded-2xl border-2 border-[#1E5EFF] bg-white shadow-xl scale-105">
+      {/* PRO */}
+      <div className="relative p-8 rounded-2xl border-2 border-[#1E5EFF] bg-white shadow-xl scale-105 flex flex-col">
 
-        {/* Badge */}
         <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#1E5EFF] text-white text-xs px-3 py-1 rounded-full">
           Most Popular
         </span>
@@ -393,10 +391,12 @@ useEffect(() => {
         <p className="mt-4 text-3xl font-bold text-[#1E5EFF]">₹2999</p>
         <p className="text-sm text-gray-500">per month</p>
 
-        <ul className="mt-6 space-y-3 text-sm text-gray-600">
-          <li>✔ Everything in Basic</li>
-          <li>✔ CRM + Leads</li>
-          <li>✔ AI Replies</li>
+        <ul className="mt-6 space-y-3 text-sm text-gray-600 flex-1">
+          <li>✔ Instagram Automation</li>
+          <li>✔ Comment → DM</li>
+          <li>✔ Custom Replies</li>
+          <li>✔ CRM + Leads Dashboard</li>
+          <li>✔ AI Smart Replies</li>
           <li>✔ Chat Panel</li>
           <li>✔ AI Follow-Ups</li>
           <li>✔ Custom Follow-Ups</li>
@@ -408,16 +408,23 @@ useEffect(() => {
       </div>
 
       {/* ELITE */}
-      <div className="p-8 rounded-2xl border bg-white hover:shadow-xl transition duration-300">
+      <div className="p-8 rounded-2xl border bg-white hover:shadow-xl transition flex flex-col">
         <h3 className="text-xl font-semibold">Elite</h3>
 
         <p className="mt-4 text-3xl font-bold">₹4999</p>
         <p className="text-sm text-gray-500">Advanced plan</p>
 
-        <ul className="mt-6 space-y-3 text-sm text-gray-600">
-          <li>✔ Everything in Pro</li>
+        <ul className="mt-6 space-y-3 text-sm text-gray-600 flex-1">
+          <li>✔ Instagram Automation</li>
+          <li>✔ Comment → DM</li>
+          <li>✔ Custom Replies</li>
+          <li>✔ CRM + Leads Dashboard</li>
+          <li>✔ AI Smart Replies</li>
+          <li>✔ Chat Panel</li>
+          <li>✔ AI Follow-Ups</li>
+          <li>✔ Custom Follow-Ups</li>
           <li>✔ Booking & Scheduling</li>
-          <li>✔ Advanced AI</li>
+          <li>✔ Advanced AI Optimization</li>
         </ul>
 
         <button className="mt-8 w-full py-3 rounded-xl border hover:bg-gray-100 transition">
