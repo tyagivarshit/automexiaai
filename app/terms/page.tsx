@@ -1,11 +1,23 @@
 "use client";
 
+import {
+  Shield,
+  FileText,
+  CreditCard,
+  AlertTriangle,
+  User,
+  RefreshCw,
+  Globe,
+  Ban,
+  MessageCircle,
+} from "lucide-react";
+
 export default function Terms() {
   return (
-    <main className="bg-white text-gray-800 overflow-x-hidden">
+    <main className="bg-gradient-to-b from-white to-blue-50/40 text-gray-900 overflow-x-hidden">
 
-      {/* ================= NAVBAR ================= */}
-      <header className="fixed top-0 w-full z-50 backdrop-blur-lg bg-white/70 border-b">
+      {/* NAVBAR */}
+      <header className="fixed top-0 w-full z-50 backdrop-blur-lg bg-white/60 border-b">
         <div className="max-w-7xl mx-auto px-6 md:px-16 py-4 flex justify-between items-center">
           <h1 className="font-semibold text-lg">Automexia AI</h1>
 
@@ -17,93 +29,93 @@ export default function Terms() {
 
           <a
             href="/"
-            className="px-4 py-2 bg-[#1E5EFF] text-white rounded-lg hover:bg-[#0B2A5B] transition"
+            className="px-4 py-2 bg-[#1E5EFF] text-white rounded-lg"
           >
             Back to Home
           </a>
         </div>
       </header>
 
-      {/* ================= CONTENT ================= */}
-      <section className="pt-32 pb-20 px-6 md:px-16">
-        <div className="max-w-4xl mx-auto">
+      {/* HERO */}
+      <section className="pt-32 pb-12 px-6 md:px-16 text-center">
+        <h1 className="text-4xl md:text-5xl font-semibold">
+          Terms & Conditions
+        </h1>
+        <p className="mt-4 text-gray-600">
+          Please read these terms carefully before using Automexia AI.
+        </p>
+        <p className="mt-2 text-sm text-gray-500">
+          Last Updated: April 7, 2026
+        </p>
+      </section>
 
-          <h1 className="text-3xl md:text-4xl font-semibold mb-4">
-            Terms & Conditions
-          </h1>
+      {/* CONTENT */}
+      <section className="px-6 md:px-16 pb-24">
+        <div className="max-w-4xl mx-auto space-y-10">
 
-          {/* STATIC DATE (NO HYDRATION ISSUE) */}
-          <p className="text-gray-500 text-sm mb-8">
-            Last Updated: April 7, 2026
-          </p>
+          <GlassSection icon={<FileText />} title="Acceptance of Terms">
+            By using our services, you agree to comply with these Terms and all applicable laws.
+          </GlassSection>
 
-          <p className="mb-6 leading-relaxed">
-            These Terms and Conditions ("Terms") govern your use of Automexia AI. 
-            By accessing or using our platform, you agree to be bound by these Terms.
-          </p>
-
-          {/* SECTIONS */}
-
-          <Section title="1. Acceptance of Terms">
-            By using our services, you agree to comply with all applicable laws 
-            and these Terms.
-          </Section>
-
-          <Section title="2. Use of Service">
+          <GlassSection icon={<User />} title="Use of Service">
             <ul className="list-disc pl-6 space-y-2">
-              <li>You must use the platform legally and responsibly</li>
-              <li>You must not misuse automation features</li>
+              <li>Use the platform legally and responsibly</li>
+              <li>Avoid misuse of automation features</li>
               <li>You are responsible for your account activity</li>
             </ul>
-          </Section>
+          </GlassSection>
 
-          <Section title="3. Account Responsibility">
-            You are responsible for maintaining the confidentiality of your account 
-            and any activities that occur under it.
-          </Section>
+          <GlassSection icon={<Shield />} title="Account Responsibility">
+            You are responsible for maintaining account security and all activities under it.
+          </GlassSection>
 
-          <Section title="4. Service Modifications">
-            We reserve the right to modify, suspend, or discontinue any part of the 
-            service at any time without notice.
-          </Section>
+          <GlassSection icon={<RefreshCw />} title="Service Modifications">
+            We may modify, suspend, or discontinue services at any time.
+          </GlassSection>
 
-          <Section title="5. Payment & Billing">
-            If you subscribe to paid plans, you agree to pay all applicable fees. 
-            Payments are non-refundable unless stated otherwise.
-          </Section>
+          <GlassSection icon={<CreditCard />} title="Payment & Billing" highlight>
+            Payments for paid plans must be completed on time. All payments are non-refundable unless stated otherwise.
+          </GlassSection>
 
-          <Section title="6. Limitation of Liability">
-            Automexia AI is not liable for any indirect, incidental, or business 
-            losses arising from the use of our platform.
-          </Section>
+          <GlassSection icon={<AlertTriangle />} title="Limitation of Liability" highlight>
+            We are not liable for indirect, incidental, or business losses arising from platform usage.
+          </GlassSection>
 
-          <Section title="7. Third-Party Integrations">
-            Our platform may integrate with third-party services (e.g., Instagram). 
-            You are subject to their respective terms and policies.
-          </Section>
+          <GlassSection icon={<Globe />} title="Third-Party Integrations">
+            Integrations (e.g., Instagram APIs) are subject to third-party terms and policies.
+          </GlassSection>
 
-          <Section title="8. Termination">
-            We may suspend or terminate your account if you violate these Terms.
-          </Section>
+          <GlassSection icon={<Ban />} title="Termination">
+            We may suspend or terminate accounts that violate these Terms.
+          </GlassSection>
 
-          <Section title="9. Intellectual Property">
-            All content, branding, and technology belong to Automexia AI and 
-            cannot be reused without permission.
-          </Section>
+          <GlassSection icon={<Shield />} title="Intellectual Property">
+            All platform content, branding, and technology belong to Automexia AI.
+          </GlassSection>
 
-          <Section title="10. Changes to Terms">
-            We may update these Terms periodically. Continued use implies acceptance 
-            of updated terms.
-          </Section>
+          <GlassSection icon={<RefreshCw />} title="Changes to Terms">
+            We may update these Terms periodically. Continued use implies acceptance.
+          </GlassSection>
 
-          <Section title="11. Contact Information">
-            Email: support@automexiaai.in
-          </Section>
+          <GlassSection icon={<MessageCircle />} title="Contact Information">
+            Email:{" "}
+            <a
+              href="mailto:support@automexiaai.in"
+              className="text-[#1E5EFF] hover:underline"
+            >
+              support@automexiaai.in
+            </a>
+          </GlassSection>
+
+          {/* TRUST LINE */}
+          <div className="text-center text-sm text-gray-500 pt-6">
+            We operate in compliance with applicable laws and industry standards.
+          </div>
 
         </div>
       </section>
 
-      {/* ================= FOOTER ================= */}
+      {/* FOOTER */}
       <footer className="px-6 md:px-16 py-12 bg-gray-100 text-sm">
         <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-6">
           <p>© 2026 Automexia AI</p>
@@ -121,14 +133,26 @@ export default function Terms() {
   );
 }
 
-/* REUSABLE SECTION */
-function Section({ title, children }: any) {
+/* GLASS SECTION */
+function GlassSection({ title, icon, children, highlight = false }: any) {
   return (
-    <div className="mt-10">
-      <h2 className="text-xl md:text-2xl font-semibold mb-3 text-[#1E5EFF]">
-        {title}
-      </h2>
-      <div className="text-gray-700 leading-relaxed">{children}</div>
+    <div
+      className={`relative backdrop-blur-xl border rounded-2xl p-6 shadow-lg transition hover:shadow-xl ${
+        highlight ? "bg-blue-50/80 border-blue-200" : "bg-white/70"
+      }`}
+    >
+      {/* ICON */}
+      <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-blue-100 text-[#1E5EFF] mb-4">
+        {icon}
+      </div>
+
+      {/* TITLE */}
+      <h2 className="text-xl font-semibold mb-3">{title}</h2>
+
+      {/* CONTENT */}
+      <div className="text-gray-700 leading-relaxed text-sm">
+        {children}
+      </div>
     </div>
   );
 }

@@ -1,7 +1,14 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { MessageCircle, Bot, Database } from "lucide-react";
+import {
+  MessageCircle,
+  Bot,
+  Database,
+  Calendar,
+  MessageSquare,
+  Repeat,
+} from "lucide-react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 60 },
@@ -9,14 +16,6 @@ const fadeUp = {
 };
 
 export default function Features() {
-
-  const demoFlow = [
-    { role: "user", text: "Price kya hai?" },
-    { role: "ai", text: "Plans ₹999/month se start hote hain 😊" },
-    { role: "user", text: "Demo mil sakta hai?" },
-    { role: "ai", text: "Haan! Aap demo book kar sakte ho 🚀" },
-  ];
-
   return (
     <main className="bg-white text-gray-900 overflow-x-hidden">
 
@@ -27,7 +26,7 @@ export default function Features() {
 
           <nav className="hidden md:flex gap-8 text-sm">
             <a href="/">Home</a>
-            <a href="/pricing">Pricing</a>
+            <a href="/privacy-policy">Policy</a>
             <a href="/contact">Contact</a>
           </nav>
 
@@ -53,29 +52,107 @@ export default function Features() {
       <section className="px-6 md:px-16 py-28">
         <div className="max-w-7xl mx-auto space-y-32">
 
-          {/* FEATURE 1 */}
           <Feature
             icon={<MessageCircle />}
             title="Instagram Automation"
             desc="Automatically reply to comments and convert them into DMs."
-            demoFlow={demoFlow}
+            points={[
+              "Auto comment replies",
+              "Comment → DM conversion",
+              "Custom reply flows",
+            ]}
+            demoFlow={[
+              { role: "user", text: "Price?" },
+              { role: "ai", text: "Check DM 😊" },
+              { role: "user", text: "Got it!" },
+              { role: "ai", text: "Sent full details 🚀" },
+            ]}
           />
 
-          {/* FEATURE 2 */}
           <Feature
             reverse
             icon={<Bot />}
             title="AI Conversations"
-            desc="Human-like AI conversations that convert better."
-            demoFlow={demoFlow}
+            desc="Human-like AI conversations that understand intent."
+            points={[
+              "Smart responses",
+              "Context-aware replies",
+              "Natural conversations",
+            ]}
+            demoFlow={[
+              { role: "user", text: "Is this available?" },
+              { role: "ai", text: "Yes! Limited slots left." },
+              { role: "user", text: "How to book?" },
+              { role: "ai", text: "Let me guide you 👇" },
+            ]}
           />
 
-          {/* FEATURE 3 */}
           <Feature
             icon={<Database />}
             title="CRM & Lead Management"
             desc="Track, manage, and convert all your leads."
-            demoFlow={demoFlow}
+            points={[
+              "Lead tracking dashboard",
+              "Conversation history",
+              "Conversion tracking",
+            ]}
+            demoFlow={[
+              { role: "ai", text: "New Lead Added" },
+              { role: "ai", text: "Status: Interested" },
+              { role: "ai", text: "Follow-up scheduled" },
+            ]}
+          />
+
+          <Feature
+            reverse
+            icon={<MessageSquare />}
+            title="Chat Panel"
+            desc="Take manual control anytime with a powerful chat interface."
+            points={[
+              "Manual override",
+              "Team access",
+              "Real-time chat control",
+            ]}
+            demoFlow={[
+              { role: "user", text: "Need help fast" },
+              { role: "ai", text: "Connecting human agent..." },
+              { role: "user", text: "Okay" },
+              { role: "ai", text: "Agent joined chat 👋" },
+            ]}
+          />
+
+          <Feature
+            icon={<Repeat />}
+            title="Follow-Up Automation"
+            desc="Automatically follow up with leads."
+            points={[
+              "AI follow-ups",
+              "Custom sequences",
+              "Timed responses",
+            ]}
+            demoFlow={[
+              { role: "ai", text: "Hey! Still interested?" },
+              { role: "user", text: "Yes" },
+              { role: "ai", text: "Let’s continue 👇" },
+            ]}
+          />
+
+          <Feature
+            reverse
+            icon={<Calendar />}
+            title="Booking & Scheduling"
+            desc="Let users book directly through chat."
+            points={[
+              "Auto scheduling",
+              "Calendar integration",
+              "Time slot management",
+            ]}
+            demoFlow={[
+              { role: "user", text: "Book a call" },
+              { role: "ai", text: "Available at 5 PM" },
+              { role: "user", text: "Done" },
+              { role: "ai", text: "Booked successfully ✅" },
+            ]}
           />
 
         </div>
@@ -100,41 +177,44 @@ export default function Features() {
 }
 
 /* FEATURE COMPONENT */
-function Feature({ title, desc, icon, demoFlow, reverse = false }: any) {
-
+function Feature({ title, desc, icon, points, demoFlow, reverse = false }: any) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 60 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.6 }}
       viewport={{ once: true }}
-      className={`grid md:grid-cols-2 gap-16 items-center ${
-        reverse ? "md:flex-row-reverse" : ""
-      }`}
+      className="grid md:grid-cols-2 gap-16 items-center"
     >
 
       {/* TEXT */}
-      <div>
+      <div className={`${reverse ? "md:order-2" : ""}`}>
         <div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center text-[#1E5EFF]">
           {icon}
         </div>
 
         <h3 className="mt-4 text-2xl font-semibold">{title}</h3>
         <p className="mt-4 text-gray-600">{desc}</p>
+
+        <ul className="mt-6 space-y-2 text-sm text-gray-600">
+          {points.map((p: string, i: number) => (
+            <li key={i} className="flex items-center gap-2">
+              <span className="text-[#1E5EFF]">✔</span> {p}
+            </li>
+          ))}
+        </ul>
       </div>
 
-      {/* DEMO CHAT */}
-      <div className="relative">
-
+      {/* DEMO */}
+      <div className={`relative ${reverse ? "md:order-1" : ""}`}>
         <div className="absolute inset-0 bg-blue-200/30 blur-2xl rounded-3xl"></div>
 
         <div className="relative bg-white border rounded-2xl shadow-xl p-6 h-64 overflow-hidden space-y-2">
-
           {demoFlow.map((msg: any, i: number) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, x: msg.role === "user" ? 50 : -50 }}
-              animate={{ opacity: 1, x: 0 }}
+              whileInView={{ opacity: 1, x: 0 }}
               transition={{ delay: i * 0.4 }}
               className={`p-2 text-sm rounded-lg max-w-[70%] ${
                 msg.role === "user"
@@ -145,10 +225,10 @@ function Feature({ title, desc, icon, demoFlow, reverse = false }: any) {
               {msg.text}
             </motion.div>
           ))}
-
         </div>
       </div>
 
     </motion.div>
   );
 }
+  
