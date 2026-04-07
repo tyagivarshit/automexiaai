@@ -282,14 +282,50 @@ useEffect(() => {
 </section>
 
       {/* ================= DEMO ================= */}
-      <section className="px-6 md:px-16 py-20 text-center">
-        <h2 className="text-3xl font-semibold">See Automexia AI in Action</h2>
-        <div className="mt-10 max-w-4xl mx-auto border rounded-2xl overflow-hidden">
-          <div className="h-64 bg-gray-200 flex items-center justify-center">
-            Demo Video / GIF Here
+<section className="px-6 md:px-16 py-24 text-center">
+  <h2 className="text-3xl md:text-4xl font-semibold">
+    See Automexia AI in Action
+  </h2>
+
+  <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+    Watch how AI automatically replies, follows up, and converts leads.
+  </p>
+
+  <div className="mt-12 max-w-3xl mx-auto bg-white border rounded-2xl shadow-xl p-6">
+
+    {/* Chat Window */}
+    <div className="space-y-3 h-64 overflow-hidden text-left">
+
+      {messages.map((msg, i) => {
+        if (!msg) return null;
+
+        return (
+          <div
+            key={i}
+            className={`p-3 rounded-xl text-sm max-w-[75%] ${
+              msg.role === "user"
+                ? "bg-gray-100 ml-auto text-right"
+                : "bg-blue-50 mr-auto"
+            }`}
+          >
+            {msg.role === "user" ? "Customer: " : "AI: "}
+            {msg.text}
           </div>
-        </div>
-      </section>
+        );
+      })}
+
+    </div>
+
+    {/* Fake typing indicator */}
+    <div className="mt-4 flex items-center gap-2 text-gray-400 text-sm">
+      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
+      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-150"></div>
+      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-300"></div>
+      <span>AI is typing...</span>
+    </div>
+
+  </div>
+</section>
 
       {/* ================= FAQ ================= */}
       <section className="px-6 md:px-16 py-24">
@@ -444,75 +480,94 @@ useEffect(() => {
 </section>
 
 
-    {/* tera pura UI */}
-
     {/* ================= POPUP ================= */}
-    {openDemo && (
-      <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
+{openDemo && (
+  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
 
-        <div className="bg-white rounded-2xl w-full max-w-md p-6 relative shadow-xl">
+    <div className="bg-white rounded-2xl w-full max-w-md p-6 relative shadow-xl">
 
-          <button
-            onClick={() => setOpenDemo(false)}
-            className="absolute top-4 right-4 text-gray-400 hover:text-black"
-          >
-            ✕
-          </button>
+      <button
+        onClick={() => setOpenDemo(false)}
+        className="absolute top-4 right-4 text-gray-400 hover:text-black"
+      >
+        ✕
+      </button>
 
-          <h2 className="text-2xl font-semibold text-center">
-            Book a Demo
-          </h2>
+      <h2 className="text-2xl font-semibold text-center">
+        Book a Demo
+      </h2>
 
-          <form
-  onSubmit={async (e) => {
-    e.preventDefault();
+      <p className="text-sm text-gray-500 text-center mt-2">
+        Get a quick walkthrough of how Automexia AI can grow your business 🚀
+      </p>
 
-    const form = new FormData(e.currentTarget);
+      <form
+        onSubmit={async (e) => {
+          e.preventDefault();
 
-    const formData = {
-      name: form.get("name"),
-      email: form.get("email"),
-    };
+          const form = new FormData(e.currentTarget);
 
-    await fetch("/api/demo", {
-      method: "POST",
-      body: JSON.stringify(formData),
-    });
+          const formData = {
+            name: form.get("name"),
+            email: form.get("email"),
+            phone: form.get("phone"),
+            business: form.get("business"),
+          };
 
-    alert("Demo request submitted 🚀");
-    setOpenDemo(false);
-  }}
-  className="mt-6 space-y-4"
->
+          await fetch("/api/demo", {
+            method: "POST",
+            body: JSON.stringify(formData),
+          });
 
-  <input
-    name="name"
-    type="text"
-    placeholder="Your Name"
-    required
-    className="w-full border px-4 py-3 rounded-xl"
-  />
+          alert("Demo request submitted 🚀");
+          setOpenDemo(false);
+        }}
+        className="mt-6 space-y-4"
+      >
 
-  <input
-    name="email"
-    type="email"
-    placeholder="Your Email"
-    required
-    className="w-full border px-4 py-3 rounded-xl"
-  />
+        <input
+          name="name"
+          type="text"
+          placeholder="Your Name"
+          required
+          className="w-full border px-4 py-3 rounded-xl"
+        />
 
-  <button
-    type="submit"
-    className="w-full py-3 bg-[#1E5EFF] text-white rounded-xl"
-  >
-    Submit
-  </button>
+        <input
+          name="email"
+          type="email"
+          placeholder="Your Email"
+          required
+          className="w-full border px-4 py-3 rounded-xl"
+        />
 
-</form>
+        <input
+          name="phone"
+          type="tel"
+          placeholder="Phone Number"
+          required
+          className="w-full border px-4 py-3 rounded-xl"
+        />
 
-        </div>
-      </div>
-    )}
+        <input
+          name="business"
+          type="text"
+          placeholder="Business / Instagram Page (optional)"
+          className="w-full border px-4 py-3 rounded-xl"
+        />
+
+        <button
+          type="submit"
+          className="w-full py-3 bg-[#1E5EFF] text-white rounded-xl hover:bg-[#0B2A5B] transition"
+        >
+          Book Demo
+        </button>
+
+      </form>
+
+    </div>
+  </div>
+)}
     </main>
   );
 }
