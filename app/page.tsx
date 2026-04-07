@@ -303,21 +303,6 @@ export default function Home() {
   </div>
 </section>
 
-{/* ================= STICKY MOBILE CTA ================= */}
-<div className="fixed bottom-4 left-4 right-4 md:hidden z-50">
-  <div className="bg-white shadow-xl rounded-2xl p-3 flex items-center justify-between">
-
-    <div className="text-left">
-      <p className="text-sm font-medium text-gray-900">Start Free Trial</p>
-      <p className="text-xs text-gray-500">No setup needed</p>
-    </div>
-
-    <button className="px-5 py-2 bg-[#1E5EFF] text-white rounded-xl text-sm hover:bg-[#0B2A5B] transition">
-      Try Now
-    </button>
-
-  </div>
-  </div>
 
     {/* tera pura UI */}
 
