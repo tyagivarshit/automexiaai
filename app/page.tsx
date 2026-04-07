@@ -158,36 +158,128 @@ useEffect(() => {
       </section>
 
       {/* ================= USE CASE ================= */}
-      <section className="px-6 md:px-16 py-20 bg-gray-50">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-semibold">
-            Built for Growth Businesses
-          </h2>
+<section className="px-6 md:px-16 py-24 bg-gray-50">
+  <div className="max-w-7xl mx-auto text-center">
 
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-6 mt-12">
-            {["Coaches","Agencies","Real Estate","E-commerce","Local"].map((u,i)=>(
-              <div key={i} className="p-6 bg-white rounded-xl border">{u}</div>
-            ))}
-          </div>
+    {/* Heading */}
+    <h2 className="text-3xl md:text-4xl font-semibold">
+      Built for Anyone Who Wants More Leads & Sales
+    </h2>
+    <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+      Whether you're a creator, business owner, or sales team — Automexia AI helps you capture, engage, and convert every lead automatically.
+    </p>
+
+    {/* Problem-Based Cards (Main Conversion Section) */}
+    <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 mt-16">
+
+      {[
+        {
+          title: "Capture Every Lead",
+          desc: "Never miss a message or inquiry again"
+        },
+        {
+          title: "Instant AI Replies",
+          desc: "Respond in seconds, 24/7 automatically"
+        },
+        {
+          title: "Convert Faster",
+          desc: "Smart follow-ups that close more deals"
+        },
+        {
+          title: "Scale Without Hiring",
+          desc: "Handle 1000+ chats with zero effort"
+        },
+      ].map((item, i) => (
+        <div
+          key={i}
+          className="p-6 bg-white rounded-2xl border hover:shadow-xl transition text-left"
+        >
+          <h3 className="font-semibold text-lg">{item.title}</h3>
+          <p className="mt-2 text-sm text-gray-600">{item.desc}</p>
         </div>
-      </section>
+      ))}
+    </div>
+
+    {/* Divider */}
+    <div className="mt-20">
+      <p className="text-sm text-gray-500">Trusted across industries</p>
+    </div>
+
+    {/* Industry Tags (Secondary) */}
+    <div className="flex flex-wrap justify-center gap-4 mt-6">
+      {[
+        "Creators",
+        "Agencies",
+        "Coaches",
+        "E-commerce",
+        "Real Estate",
+        "Local Businesses",
+        "Sales Teams",
+      ].map((item, i) => (
+        <div
+          key={i}
+          className="px-4 py-2 bg-white border rounded-full text-sm text-gray-600 hover:shadow-md transition"
+        >
+          {item}
+        </div>
+      ))}
+    </div>
+
+  </div>
+</section>
 
       {/* ================= TRUST ================= */}
-      <section className="px-6 md:px-16 py-20 bg-gray-50">
-        <div className="max-w-6xl mx-auto text-center">
-          <h2 className="text-3xl font-semibold">Trusted by Growing Businesses</h2>
+<section className="px-6 md:px-16 py-24 bg-gray-50">
+  <div className="max-w-7xl mx-auto text-center">
 
-          <div className="grid md:grid-cols-3 gap-8 mt-12">
-            {[
-              "“Automexia doubled our lead conversions.”",
-              "“We never miss a lead now.”",
-              "“AI follow-ups are insane!”",
-            ].map((t,i)=>(
-              <div key={i} className="p-6 bg-white border rounded-xl">{t}</div>
-            ))}
+    {/* Heading */}
+    <h2 className="text-3xl md:text-4xl font-semibold">
+      Trusted by Growing Businesses
+    </h2>
+    <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
+      Businesses using Automexia AI are capturing more leads, responding faster, and converting better — automatically.
+    </p>
+
+    {/* Testimonials */}
+    <div className="grid md:grid-cols-3 gap-8 mt-16">
+
+      {[
+        {
+          text: "Automexia helped us respond instantly to every inquiry. Our conversions increased without hiring more people.",
+        },
+        {
+          text: "We stopped missing leads completely. The AI handles conversations better than expected.",
+        },
+        {
+          text: "Follow-ups used to take hours. Now everything runs automatically and results are clearly better.",
+        },
+      ].map((item, i) => (
+        <div
+          key={i}
+          className="p-6 bg-white border rounded-2xl shadow-sm hover:shadow-xl transition text-left"
+        >
+          <p className="text-gray-700 text-sm leading-relaxed">
+            “{item.text}”
+          </p>
+
+          {/* subtle trust indicator */}
+          <div className="mt-4 text-xs text-gray-400">
+            Verified User
           </div>
         </div>
-      </section>
+      ))}
+
+    </div>
+
+    {/* Bottom Trust Line */}
+    <div className="mt-16">
+      <p className="text-sm text-gray-500">
+        Helping businesses automate conversations and increase revenue across industries
+      </p>
+    </div>
+
+  </div>
+</section>
 
       {/* ================= DEMO ================= */}
       <section className="px-6 md:px-16 py-20 text-center">
