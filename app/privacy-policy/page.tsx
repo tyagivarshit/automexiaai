@@ -63,12 +63,37 @@ export default function PrivacyPolicy() {
             </ul>
           </GlassSection>
 
-          <GlassSection icon={<Shield />} title="Data Security">
-            <p>
-              We use encryption, secure servers, and strict access controls to
-              protect your data.
-            </p>
-          </GlassSection>
+          <GlassSection icon={<Shield />} title="Instagram & Facebook Integration">
+  <p>
+    Automexia AI uses Instagram Graph API and Facebook APIs to enable automation features such as replying to messages, managing conversations, and capturing leads.
+  </p>
+
+  <ul className="list-disc pl-6 mt-3 space-y-2">
+    <li>Access limited to messages and basic profile data</li>
+    <li>Used only for automation and communication</li>
+    <li>No selling or misuse of user data</li>
+  </ul>
+</GlassSection>
+
+<GlassSection icon={<Lock />} title="Permissions & Access">
+  <p>
+    Our application requests permissions only to perform automation tasks such as reading messages and sending replies on behalf of the user.
+  </p>
+
+  <p className="mt-3">
+    Users can revoke access anytime through their account or Facebook settings.
+  </p>
+</GlassSection>
+
+<GlassSection icon={<Shield />} title="Data Protection">
+  <p>
+    We implement industry-standard security measures including encryption, secure servers, and restricted access to protect user data.
+  </p>
+
+  <p className="mt-3">
+    Data is stored only as long as necessary for service functionality and legal compliance.
+  </p>
+</GlassSection>
 
           <GlassSection icon={<Lock />} title="Your Rights">
             <ul className="list-disc pl-6 space-y-2">
