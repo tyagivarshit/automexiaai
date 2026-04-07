@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useState } from "react";
+import { useState , useEffect} from "react";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 60 },
@@ -11,6 +11,36 @@ const fadeUp = {
 
 export default function Home() {
   const [openDemo, setOpenDemo] = useState(false);
+    const demoFlow = [
+  { role: "user", text: "Price kya hai?" },
+  { role: "ai", text: "Plans ₹999/month se start hote hain 😊" },
+  { role: "user", text: "Demo mil sakta hai?" },
+  { role: "ai", text: "Haan! Aap demo book kar sakte ho 🚀" },
+];
+
+const [messages, setMessages] = useState<
+  { role: string; text: string }[]
+>([]);
+
+useEffect(() => {
+  let i = 0;
+
+  const interval = setInterval(() => {
+    if (i >= demoFlow.length) {
+      clearInterval(interval);
+      return;
+    }
+
+    const msg = demoFlow[i];
+    if (msg) {
+      setMessages((prev) => [...prev, msg]);
+    }
+
+    i++;
+  }, 1500);
+
+  return () => clearInterval(interval);
+}, []);
   return (
     <main className="bg-white text-gray-900 overflow-x-hidden">
 
@@ -62,23 +92,41 @@ export default function Home() {
             </div>
           </motion.div>
 
-          {/* DASHBOARD */}
-          <motion.div initial="hidden" animate="show" variants={fadeUp}>
-            <div className="bg-white border rounded-2xl shadow-xl p-6 space-y-4">
-              <div className="p-4 bg-gray-50 rounded-xl">
-                <p className="text-sm">Customer: Price kya hai?</p>
-              </div>
-              <div className="p-4 bg-blue-50 rounded-xl">
-                <p className="text-sm">AI: Details DM me bhej diye 😊</p>
-              </div>
-              <div className="grid grid-cols-2 gap-4">
-                <div className="p-4 bg-gray-50 rounded-xl text-sm">Leads: 128</div>
-                <div className="p-4 bg-gray-50 rounded-xl text-sm">Converted: 42</div>
-              </div>
-            </div>
-          </motion.div>
+         {/* DASHBOARD */}
+<motion.div initial="hidden" animate="show" variants={fadeUp}>
+  <div className="bg-white border rounded-2xl shadow-xl p-6 space-y-4">
 
-        </div>
+    {/* Chat Demo */}
+    <div className="space-y-3 h-48 overflow-hidden">
+      {messages.map((msg, i) => {
+        if (!msg) return null;
+
+        return (
+          <div
+            key={i}
+            className={`p-3 rounded-xl text-sm max-w-[70%] ${
+              msg.role === "user"
+                ? "bg-gray-100 ml-auto text-right"
+                : "bg-blue-50 mr-auto"
+            }`}
+          >
+            {msg.role === "user" ? "Customer: " : "AI: "}
+            {msg.text}
+          </div>
+        );
+      })}
+    </div>
+
+    {/* Stats */}
+    <div className="grid grid-cols-2 gap-4">
+      <div className="p-4 bg-gray-50 rounded-xl text-sm">Leads: 128</div>
+      <div className="p-4 bg-gray-50 rounded-xl text-sm">Converted: 42</div>
+    </div>
+
+  </div>
+</motion.div>
+</div> 
+
       </section>
 
       {/* ================= FEATURES ================= */}
