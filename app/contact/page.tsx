@@ -1,55 +1,29 @@
 "use client";
 
+const APP_URL = "https://app.automexiaai.in/auth/register";
+
 export default function Contact() {
   return (
-    <main className="bg-white text-gray-900 overflow-x-hidden">
-
-      {/* ================= NAVBAR ================= */}
-      <header className="fixed top-0 w-full z-50 backdrop-blur-lg bg-white/70 border-b">
-        <div className="max-w-7xl mx-auto px-6 md:px-16 py-4 flex justify-between items-center">
-          <h1 className="font-semibold text-lg">Automexia AI</h1>
-
-          <nav className="hidden md:flex gap-8 text-sm">
-            <a href="/">Home</a>
-            <a href="/privacy-policy">Privacy</a>
-            <a href="/terms">Terms</a>
-          </nav>
-
-          <a
-            href="/"
-            className="px-4 py-2 bg-[#1E5EFF] text-white rounded-lg hover:bg-[#0B2A5B] transition"
-          >
-            Back to Home
-          </a>
-        </div>
-      </header>
-
-      {/* ================= HERO ================= */}
-      <section className="pt-32 pb-16 px-6 md:px-16 text-center">
-        <h1 className="text-4xl md:text-5xl font-semibold">
-          Let’s Talk 👋
-        </h1>
-        <p className="mt-4 text-gray-600 max-w-xl mx-auto">
-          Questions, partnerships, or demo requests — we’re here to help you grow faster with Automexia AI.
+    <main className="overflow-x-hidden bg-transparent text-gray-900">
+      <section className="px-6 pb-16 pt-36 text-center md:px-16 md:pt-40">
+        <h1 className="text-4xl font-semibold md:text-5xl">Let us Talk</h1>
+        <p className="mx-auto mt-4 max-w-xl text-gray-600">
+          Questions, partnerships, or demo requests. We are here to help you
+          grow faster with Automexia AI.
         </p>
       </section>
 
-      {/* ================= CONTACT GRID ================= */}
-      <section className="px-6 md:px-16 pb-24">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-10">
-
-          {/* LEFT: CONTACT INFO */}
-          <div className="bg-white border rounded-2xl shadow-lg p-8 space-y-6">
-
+      <section className="px-6 pb-24 md:px-16">
+        <div className="mx-auto grid max-w-6xl gap-10 md:grid-cols-2">
+          <div className="space-y-6 rounded-2xl border bg-white p-8 shadow-lg">
             <h2 className="text-xl font-semibold">Contact Information</h2>
 
             <div className="space-y-4 text-sm">
-
               <div>
                 <p className="text-gray-500">Email</p>
                 <a
                   href="mailto:contact@automexiaai.in"
-                  className="text-[#1E5EFF] font-medium hover:underline"
+                  className="font-medium text-[#1E5EFF] hover:underline"
                 >
                   contact@automexiaai.in
                 </a>
@@ -62,64 +36,52 @@ export default function Contact() {
 
               <div>
                 <p className="text-gray-500">Support</p>
-                <p className="font-medium">24×7 Support Available</p>
+                <p className="font-medium">24x7 Support Available</p>
               </div>
-
             </div>
 
             <div className="text-sm text-gray-500">
-              ⚡ We usually respond within a few hours
+              We usually respond within a few hours.
             </div>
-
           </div>
 
-          {/* RIGHT: FORM */}
-          <div className="bg-white border rounded-2xl shadow-lg p-8">
-
-            <h2 className="text-xl font-semibold mb-6">
-              Send us a message
-            </h2>
+          <div className="rounded-2xl border bg-white p-8 shadow-lg">
+            <h2 className="mb-6 text-xl font-semibold">Send us a message</h2>
 
             <form className="space-y-4">
-
               <input
                 type="text"
                 placeholder="Your Name"
-                className="w-full border px-4 py-3 rounded-xl"
+                className="w-full rounded-xl border px-4 py-3"
               />
 
               <input
                 type="email"
                 placeholder="Your Email"
-                className="w-full border px-4 py-3 rounded-xl"
+                className="w-full rounded-xl border px-4 py-3"
               />
 
               <textarea
                 placeholder="Your Message"
                 rows={4}
-                className="w-full border px-4 py-3 rounded-xl"
+                className="w-full rounded-xl border px-4 py-3"
               />
 
               <button
                 type="submit"
-                className="w-full py-3 bg-[#1E5EFF] text-white rounded-xl hover:bg-[#0B2A5B] transition"
+                className="w-full rounded-xl bg-[#1E5EFF] py-3 text-white transition hover:bg-[#0B2A5B]"
               >
                 Send Message
               </button>
-
             </form>
-
           </div>
-
         </div>
       </section>
 
-      {/* ================= CTA ================= */}
-      <section className="px-6 md:px-16 py-20 bg-gradient-to-r from-[#0B2A5B] via-[#1E5EFF] to-[#4DA3FF] text-white text-center relative overflow-hidden">
+      <section className="relative overflow-hidden bg-gradient-to-r from-[#0B2A5B] via-[#1E5EFF] to-[#4DA3FF] px-6 py-20 text-center text-white md:px-16">
+        <div className="absolute left-1/2 top-0 size-[500px] -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
 
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-white/10 blur-3xl rounded-full"></div>
-
-        <div className="relative max-w-2xl mx-auto">
+        <div className="relative mx-auto max-w-2xl">
           <h2 className="text-3xl font-semibold">
             Ready to automate your leads?
           </h2>
@@ -129,28 +91,15 @@ export default function Contact() {
           </p>
 
           <a
-            href="/"
-            className="inline-block mt-6 px-8 py-4 bg-white text-[#1E5EFF] rounded-xl font-medium hover:bg-gray-100 transition"
+            href={APP_URL}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-6 inline-block rounded-xl bg-white px-8 py-4 font-medium text-[#1E5EFF] transition hover:bg-gray-100"
           >
             Get Started
           </a>
         </div>
       </section>
-
-      {/* ================= FOOTER ================= */}
-      <footer className="px-6 md:px-16 py-12 bg-gray-100 text-sm">
-        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between gap-6">
-          <p>© 2026 Automexia AI</p>
-
-          <div className="flex gap-6">
-            <a href="/">Home</a>
-            <a href="/privacy-policy">Privacy</a>
-            <a href="/terms">Terms</a>
-            <a href="/contact">Contact</a>
-          </div>
-        </div>
-      </footer>
-
     </main>
   );
 }

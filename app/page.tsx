@@ -2,579 +2,579 @@
 
 import { motion } from "framer-motion";
 import Link from "next/link";
-import { useState , useEffect} from "react";
+import { useEffect, useState } from "react";
+
+type DemoMessage = {
+  role: "user" | "ai";
+  text: string;
+};
+
+const APP_URL = "https://app.automexiaai.in/auth/register";
 
 const fadeUp = {
   hidden: { opacity: 0, y: 60 },
   show: { opacity: 1, y: 0 },
 };
 
-export default function Home() {
-  const [openDemo, setOpenDemo] = useState(false);
-    const demoFlow = [
+const demoFlow: DemoMessage[] = [
   { role: "user", text: "Price kya hai?" },
-  { role: "ai", text: "Plans ₹999/month se start hote hain 😊" },
+  { role: "ai", text: "Plans Rs 999/month se start hote hain." },
   { role: "user", text: "Demo mil sakta hai?" },
-  { role: "ai", text: "Haan! Aap demo book kar sakte ho 🚀" },
+  { role: "ai", text: "Haan, aap demo book kar sakte ho." },
 ];
 
-const [messages, setMessages] = useState<
-  { role: string; text: string }[]
->([]);
+const featureCards = [
+  "Instagram Automation",
+  "AI Conversations",
+  "CRM + Leads",
+  "Chat Panel",
+  "Follow-Ups Engine",
+  "Booking System",
+];
 
-useEffect(() => {
-  let i = 0;
+const useCases = [
+  {
+    title: "Capture Every Lead",
+    desc: "Never miss a message or inquiry again.",
+  },
+  {
+    title: "Instant AI Replies",
+    desc: "Respond in seconds, 24/7 automatically.",
+  },
+  {
+    title: "Convert Faster",
+    desc: "Smart follow-ups that close more deals.",
+  },
+  {
+    title: "Scale Without Hiring",
+    desc: "Handle 1000+ chats with zero extra effort.",
+  },
+];
 
-  const interval = setInterval(() => {
-    if (i >= demoFlow.length) {
-      clearInterval(interval);
-      return;
-    }
+const industries = [
+  "Creators",
+  "Agencies",
+  "Coaches",
+  "E-commerce",
+  "Real Estate",
+  "Local Businesses",
+  "Sales Teams",
+];
 
-    const msg = demoFlow[i];
-    if (msg) {
-      setMessages((prev) => [...prev, msg]);
-    }
+const testimonials = [
+  "Automexia helped us respond instantly to every inquiry. Our conversions increased without hiring more people.",
+  "We stopped missing leads completely. The AI handles conversations better than expected.",
+  "Follow-ups used to take hours. Now everything runs automatically and results are clearly better.",
+];
 
-    i++;
-  }, 1500);
+const faqItems = [
+  {
+    q: "How does AI reply work?",
+    a: "Smart automation replies instantly with context-aware responses.",
+  },
+  {
+    q: "Can I manually reply?",
+    a: "Yes, your team can jump into chats anytime.",
+  },
+  {
+    q: "Is it safe?",
+    a: "Yes, the platform is designed around secure workflows and controlled access.",
+  },
+];
 
-  return () => clearInterval(interval);
-}, []);
+const pricingPlans = [
+  {
+    name: "Basic",
+    price: "Rs 999",
+    note: "Starter plan",
+    featured: false,
+    cta: "Get Started",
+    items: [
+      "Instagram Automation",
+      "Comment to DM",
+      "Custom Replies",
+      "Basic Lead Capture",
+    ],
+  },
+  {
+    name: "Pro",
+    price: "Rs 2999",
+    note: "per month",
+    featured: true,
+    cta: "Upgrade Now",
+    items: [
+      "Instagram Automation",
+      "Comment to DM",
+      "Custom Replies",
+      "CRM + Leads Dashboard",
+      "AI Smart Replies",
+      "Chat Panel",
+      "AI Follow-Ups",
+      "Custom Follow-Ups",
+    ],
+  },
+  {
+    name: "Elite",
+    price: "Rs 4999",
+    note: "Advanced plan",
+    featured: false,
+    cta: "Get Started",
+    items: [
+      "Instagram Automation",
+      "Comment to DM",
+      "Custom Replies",
+      "CRM + Leads Dashboard",
+      "AI Smart Replies",
+      "Chat Panel",
+      "AI Follow-Ups",
+      "Custom Follow-Ups",
+      "Booking & Scheduling",
+      "Advanced AI Optimization",
+    ],
+  },
+];
+
+export default function Home() {
+  const [openDemo, setOpenDemo] = useState(false);
+  const [messages, setMessages] = useState<DemoMessage[]>([]);
+
+  useEffect(() => {
+    setMessages([]);
+
+    let index = 0;
+    const interval = setInterval(() => {
+      const message = demoFlow[index];
+
+      if (!message) {
+        clearInterval(interval);
+        return;
+      }
+
+      setMessages((prev) => [...prev, message]);
+      index += 1;
+    }, 1500);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
-    <main className="bg-white text-gray-900 overflow-x-hidden">
-
-      {/* ================= NAVBAR ================= */}
-      <header className="fixed top-0 w-full z-50 backdrop-blur-lg bg-white/70 border-b">
-        <div className="max-w-7xl mx-auto px-6 md:px-16 py-4 flex justify-between items-center">
-          <h1 className="font-semibold text-lg">Automexia AI</h1>
-
-          <nav className="hidden md:flex gap-8 text-sm">
-              <a href="/features">Features</a>
-              <a href="#pricing" className="hover:text-[#1E5EFF]">Pricing</a>
-            <a href="/contact">Contact</a>
-            </nav>
-
-          <Link
-          href="https://app.automexiaai.in/auth/register"
-          className="px-4 py-2 bg-[#1E5EFF] text-white rounded-lg hover:bg-[#0B2A5B] transition">
-            Get Started
-          </Link>
-        </div>
-      </header>
-
-      {/* ================= HERO ================= */}
-      <section className="pt-32 pb-20 px-6 md:px-16 relative">
-        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-16 items-center">
-
+    <main className="overflow-x-hidden bg-transparent text-gray-900">
+      <section className="relative px-6 pb-20 pt-36 md:px-16 md:pt-40">
+        <div className="mx-auto grid max-w-7xl items-center gap-16 md:grid-cols-2">
           <motion.div initial="hidden" animate="show" variants={fadeUp}>
-            <h1 className="text-4xl md:text-6xl font-semibold leading-tight">
+            <div className="inline-flex items-center gap-2 rounded-full border border-sky-200 bg-white/80 px-4 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-sky-700 shadow-sm">
+              Revenue Automation
+            </div>
+
+            <h1 className="mt-6 text-4xl font-semibold leading-tight md:text-6xl">
               Turn Leads Into{" "}
-              <span className="bg-gradient-to-r from-[#0B2A5B] via-[#1E5EFF] to-[#4DA3FF] text-transparent bg-clip-text">
+              <span className="bg-gradient-to-r from-[#0B2A5B] via-[#1E5EFF] to-[#4DA3FF] bg-clip-text text-transparent">
                 Revenue
               </span>{" "}
-              — Automatically
+              Automatically
             </h1>
 
-            <p className="mt-6 text-lg text-gray-600">
-              Automexia AI handles Instagram replies, follow-ups, and conversions — so you never lose a lead again.
+            <p className="mt-6 max-w-2xl text-lg text-gray-600">
+              Automexia AI handles Instagram replies, follow-ups, and
+              conversions so you never lose a lead again.
             </p>
 
-            <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <Link
-              href="https://app.automexiaai.in/auth/register"
-              className="px-4 py-2 bg-[#1E5EFF] text-white rounded-lg hover:bg-[#0B2A5B] transition">
+            <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+              <a
+                href={APP_URL}
+                target="_blank"
+                rel="noreferrer"
+                className="rounded-2xl bg-[#1E5EFF] px-5 py-3 text-center text-white shadow-[0_18px_36px_rgba(30,94,255,0.22)] transition hover:-translate-y-0.5 hover:bg-[#0B2A5B]"
+              >
                 Start Free Trial
-              </Link>
-              <button className="px-6 py-3 rounded-xl border hover:bg-gray-100 transition">
+              </a>
+
+              <button
+                type="button"
+                onClick={() => setOpenDemo(true)}
+                className="rounded-2xl border border-slate-200 bg-white/80 px-6 py-3 transition hover:bg-gray-100"
+              >
                 Watch Demo
               </button>
             </div>
           </motion.div>
 
-         {/* DASHBOARD */}
-<motion.div initial="hidden" animate="show" variants={fadeUp}>
-  <div className="bg-white border rounded-2xl shadow-xl p-6 space-y-4">
+          <motion.div initial="hidden" animate="show" variants={fadeUp}>
+            <div className="space-y-4 rounded-3xl border border-slate-200 bg-white p-6 shadow-xl">
+              <div className="space-y-3 overflow-hidden rounded-2xl bg-slate-50/70 p-4">
+                <div className="flex items-center justify-between text-xs uppercase tracking-[0.24em] text-slate-400">
+                  <span>Live AI Demo</span>
+                  <span>24/7</span>
+                </div>
 
-    {/* Chat Demo */}
-    <div className="space-y-3 h-48 overflow-hidden">
-      {messages.map((msg, i) => {
-        if (!msg) return null;
+                <div className="space-y-3">
+                  {messages.map((msg, index) => (
+                    <div
+                      key={`${msg.role}-${index}`}
+                      className={`max-w-[72%] rounded-2xl p-3 text-sm ${
+                        msg.role === "user"
+                          ? "ml-auto bg-gray-100 text-right"
+                          : "mr-auto bg-blue-50"
+                      }`}
+                    >
+                      {msg.role === "user" ? "Customer: " : "AI: "}
+                      {msg.text}
+                    </div>
+                  ))}
+                </div>
+              </div>
 
-        return (
-          <div
-            key={i}
-            className={`p-3 rounded-xl text-sm max-w-[70%] ${
-              msg.role === "user"
-                ? "bg-gray-100 ml-auto text-right"
-                : "bg-blue-50 mr-auto"
-            }`}
-          >
-            {msg.role === "user" ? "Customer: " : "AI: "}
-            {msg.text}
-          </div>
-        );
-      })}
-    </div>
-
-    {/* Stats */}
-    <div className="grid grid-cols-2 gap-4">
-      <div className="p-4 bg-gray-50 rounded-xl text-sm">Leads: 128</div>
-      <div className="p-4 bg-gray-50 rounded-xl text-sm">Converted: 42</div>
-    </div>
-
-  </div>
-</motion.div>
-</div> 
-
+              <div className="grid grid-cols-2 gap-4">
+                <div className="rounded-2xl bg-slate-50 p-4 text-sm">
+                  Leads: 128
+                </div>
+                <div className="rounded-2xl bg-slate-50 p-4 text-sm">
+                  Converted: 42
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </section>
 
-      {/* ================= FEATURES ================= */}
-      <section className="px-6 md:px-16 py-24">
-        <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-3xl md:text-4xl font-semibold">
+      <section className="px-6 py-24 md:px-16">
+        <div className="mx-auto max-w-7xl text-center">
+          <h2 className="text-3xl font-semibold md:text-4xl">
             Everything You Need to Convert Leads
           </h2>
 
-          <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-8 mt-16">
-            {[
-              "Instagram Automation",
-              "AI Conversations",
-              "CRM + Leads",
-              "Chat Panel",
-              "Follow-Ups Engine",
-              "Booking System",
-            ].map((title, i) => (
-              <motion.div key={i} whileHover={{ scale: 1.05 }}
-                className="p-6 rounded-2xl border hover:shadow-xl transition bg-white">
+          <div className="mt-16 grid gap-8 sm:grid-cols-2 md:grid-cols-3">
+            {featureCards.map((title, index) => (
+              <motion.div
+                key={title}
+                whileHover={{ scale: 1.05 }}
+                transition={{ duration: 0.2 }}
+                className="rounded-2xl border bg-white p-6 transition hover:shadow-xl"
+              >
                 <h3 className="text-xl font-semibold">{title}</h3>
-                <p className="mt-3 text-gray-600 text-sm">
-                  Powerful automation to boost conversions.
+                <p className="mt-3 text-sm text-gray-600">
+                  Powerful automation built to boost conversions.
                 </p>
+                <div className="mt-6 text-xs uppercase tracking-[0.2em] text-slate-400">
+                  Module {index + 1}
+                </div>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ================= USE CASE ================= */}
-<section className="px-6 md:px-16 py-24 bg-gray-50">
-  <div className="max-w-7xl mx-auto text-center">
-
-    {/* Heading */}
-    <h2 className="text-3xl md:text-4xl font-semibold">
-      Built for Anyone Who Wants More Leads & Sales
-    </h2>
-    <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
-      Whether you're a creator, business owner, or sales team — Automexia AI helps you capture, engage, and convert every lead automatically.
-    </p>
-
-    {/* Problem-Based Cards (Main Conversion Section) */}
-    <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-6 mt-16">
-
-      {[
-        {
-          title: "Capture Every Lead",
-          desc: "Never miss a message or inquiry again"
-        },
-        {
-          title: "Instant AI Replies",
-          desc: "Respond in seconds, 24/7 automatically"
-        },
-        {
-          title: "Convert Faster",
-          desc: "Smart follow-ups that close more deals"
-        },
-        {
-          title: "Scale Without Hiring",
-          desc: "Handle 1000+ chats with zero effort"
-        },
-      ].map((item, i) => (
-        <div
-          key={i}
-          className="p-6 bg-white rounded-2xl border hover:shadow-xl transition text-left"
-        >
-          <h3 className="font-semibold text-lg">{item.title}</h3>
-          <p className="mt-2 text-sm text-gray-600">{item.desc}</p>
-        </div>
-      ))}
-    </div>
-
-    {/* Divider */}
-    <div className="mt-20">
-      <p className="text-sm text-gray-500">Trusted across industries</p>
-    </div>
-
-    {/* Industry Tags (Secondary) */}
-    <div className="flex flex-wrap justify-center gap-4 mt-6">
-      {[
-        "Creators",
-        "Agencies",
-        "Coaches",
-        "E-commerce",
-        "Real Estate",
-        "Local Businesses",
-        "Sales Teams",
-      ].map((item, i) => (
-        <div
-          key={i}
-          className="px-4 py-2 bg-white border rounded-full text-sm text-gray-600 hover:shadow-md transition"
-        >
-          {item}
-        </div>
-      ))}
-    </div>
-
-  </div>
-</section>
-
-      {/* ================= TRUST ================= */}
-<section className="px-6 md:px-16 py-24 bg-gray-50">
-  <div className="max-w-7xl mx-auto text-center">
-
-    {/* Heading */}
-    <h2 className="text-3xl md:text-4xl font-semibold">
-      Trusted by Growing Businesses
-    </h2>
-    <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
-      Businesses using Automexia AI are capturing more leads, responding faster, and converting better — automatically.
-    </p>
-
-    {/* Testimonials */}
-    <div className="grid md:grid-cols-3 gap-8 mt-16">
-
-      {[
-        {
-          text: "Automexia helped us respond instantly to every inquiry. Our conversions increased without hiring more people.",
-        },
-        {
-          text: "We stopped missing leads completely. The AI handles conversations better than expected.",
-        },
-        {
-          text: "Follow-ups used to take hours. Now everything runs automatically and results are clearly better.",
-        },
-      ].map((item, i) => (
-        <div
-          key={i}
-          className="p-6 bg-white border rounded-2xl shadow-sm hover:shadow-xl transition text-left"
-        >
-          <p className="text-gray-700 text-sm leading-relaxed">
-            “{item.text}”
+      <section className="bg-gray-50 px-6 py-24 md:px-16">
+        <div className="mx-auto max-w-7xl text-center">
+          <h2 className="text-3xl font-semibold md:text-4xl">
+            Built for Anyone Who Wants More Leads and Sales
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-gray-600">
+            Whether you are a creator, business owner, or sales team, Automexia
+            AI helps you capture, engage, and convert every lead automatically.
           </p>
 
-          {/* subtle trust indicator */}
-          <div className="mt-4 text-xs text-gray-400">
-            Verified User
+          <div className="mt-16 grid gap-6 sm:grid-cols-2 md:grid-cols-4">
+            {useCases.map((item) => (
+              <div
+                key={item.title}
+                className="rounded-2xl border bg-white p-6 text-left transition hover:shadow-xl"
+              >
+                <h3 className="text-lg font-semibold">{item.title}</h3>
+                <p className="mt-2 text-sm text-gray-600">{item.desc}</p>
+              </div>
+            ))}
           </div>
-        </div>
-      ))}
 
-    </div>
-
-    {/* Bottom Trust Line */}
-    <div className="mt-16">
-      <p className="text-sm text-gray-500">
-        Helping businesses automate conversations and increase revenue across industries
-      </p>
-    </div>
-
-  </div>
-</section>
-
-      {/* ================= DEMO ================= */}
-<section className="px-6 md:px-16 py-24 text-center">
-  <h2 className="text-3xl md:text-4xl font-semibold">
-    See Automexia AI in Action
-  </h2>
-
-  <p className="mt-4 text-gray-600 max-w-2xl mx-auto">
-    Watch how AI automatically replies, follows up, and converts leads.
-  </p>
-
-  <div className="mt-12 max-w-3xl mx-auto bg-white border rounded-2xl shadow-xl p-6">
-
-    {/* Chat Window */}
-    <div className="space-y-3 h-64 overflow-hidden text-left">
-
-      {messages.map((msg, i) => {
-        if (!msg) return null;
-
-        return (
-          <div
-            key={i}
-            className={`p-3 rounded-xl text-sm max-w-[75%] ${
-              msg.role === "user"
-                ? "bg-gray-100 ml-auto text-right"
-                : "bg-blue-50 mr-auto"
-            }`}
-          >
-            {msg.role === "user" ? "Customer: " : "AI: "}
-            {msg.text}
+          <div className="mt-20">
+            <p className="text-sm text-gray-500">Trusted across industries</p>
           </div>
-        );
-      })}
 
-    </div>
-
-    {/* Fake typing indicator */}
-    <div className="mt-4 flex items-center gap-2 text-gray-400 text-sm">
-      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce"></div>
-      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-150"></div>
-      <div className="w-2 h-2 bg-gray-400 rounded-full animate-bounce delay-300"></div>
-      <span>AI is typing...</span>
-    </div>
-
-  </div>
-</section>
-
-      {/* ================= FAQ ================= */}
-      <section className="px-6 md:px-16 py-24">
-        <div className="max-w-4xl mx-auto">
-          <h2 className="text-3xl font-semibold text-center">FAQ</h2>
-
-          <div className="mt-12 space-y-6">
-            {[
-              {q:"How does AI reply work?",a:"Smart automation replies instantly."},
-              {q:"Can I manually reply?",a:"Yes anytime."},
-              {q:"Is it safe?",a:"Yes fully compliant."},
-            ].map((item,i)=>(
-              <div key={i} className="p-6 border rounded-xl">
-                <h3>{item.q}</h3>
-                <p className="text-gray-600 text-sm mt-2">{item.a}</p>
+          <div className="mt-6 flex flex-wrap justify-center gap-4">
+            {industries.map((item) => (
+              <div
+                key={item}
+                className="rounded-full border bg-white px-4 py-2 text-sm text-gray-600 transition hover:shadow-md"
+              >
+                {item}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-     {/* ================= PRICING ================= */}
-<section id="pricing" className="px-6 md:px-16 py-28 bg-gradient-to-b from-white to-blue-50/40">
-  <div className="max-w-7xl mx-auto text-center">
+      <section className="bg-gray-50 px-6 py-24 md:px-16">
+        <div className="mx-auto max-w-7xl text-center">
+          <h2 className="text-3xl font-semibold md:text-4xl">
+            Trusted by Growing Businesses
+          </h2>
+          <p className="mx-auto mt-4 max-w-2xl text-gray-600">
+            Businesses using Automexia AI are capturing more leads, responding
+            faster, and converting better automatically.
+          </p>
 
-    <h2 className="text-3xl md:text-4xl font-semibold">
-      Simple, Transparent Pricing
-    </h2>
-    <p className="mt-4 text-gray-600">
-      Choose the plan that fits your growth stage
-    </p>
+          <div className="mt-16 grid gap-8 md:grid-cols-3">
+            {testimonials.map((text) => (
+              <div
+                key={text}
+                className="rounded-2xl border bg-white p-6 text-left shadow-sm transition hover:shadow-xl"
+              >
+                <p className="text-sm leading-relaxed text-gray-700">
+                  &ldquo;{text}&rdquo;
+                </p>
 
-    <div className="grid md:grid-cols-3 gap-8 mt-20 items-stretch">
+                <div className="mt-4 text-xs text-gray-400">Verified User</div>
+              </div>
+            ))}
+          </div>
 
-      {/* BASIC */}
-      <div className="p-8 rounded-2xl border bg-white hover:shadow-xl transition flex flex-col">
-        <h3 className="text-xl font-semibold">Basic</h3>
+          <div className="mt-16">
+            <p className="text-sm text-gray-500">
+              Helping businesses automate conversations and increase revenue
+              across industries.
+            </p>
+          </div>
+        </div>
+      </section>
 
-        <p className="mt-4 text-3xl font-bold">₹999</p>
-        <p className="text-sm text-gray-500">Starter plan</p>
+      <section className="px-6 py-24 text-center md:px-16">
+        <h2 className="text-3xl font-semibold md:text-4xl">
+          See Automexia AI in Action
+        </h2>
 
-        <ul className="mt-6 space-y-3 text-sm text-gray-600 flex-1">
-          <li>✔ Instagram Automation</li>
-          <li>✔ Comment → DM</li>
-          <li>✔ Custom Replies</li>
-          <li>✔ Basic Lead Capture</li>
-        </ul>
+        <p className="mx-auto mt-4 max-w-2xl text-gray-600">
+          Watch how AI automatically replies, follows up, and converts leads.
+        </p>
 
-        <button className="mt-8 w-full py-3 rounded-xl border hover:bg-gray-100 transition">
-          Get Started
-        </button>
-      </div>
+        <div className="mx-auto mt-12 max-w-3xl rounded-2xl border bg-white p-6 shadow-xl">
+          <div className="h-64 space-y-3 overflow-hidden text-left">
+            {messages.map((msg, index) => (
+              <div
+                key={`${msg.role}-demo-${index}`}
+                className={`max-w-[75%] rounded-xl p-3 text-sm ${
+                  msg.role === "user"
+                    ? "ml-auto bg-gray-100 text-right"
+                    : "mr-auto bg-blue-50"
+                }`}
+              >
+                {msg.role === "user" ? "Customer: " : "AI: "}
+                {msg.text}
+              </div>
+            ))}
+          </div>
 
-      {/* PRO */}
-      <div className="relative p-8 rounded-2xl border-2 border-[#1E5EFF] bg-white shadow-xl scale-105 flex flex-col">
+          <div className="mt-4 flex items-center gap-2 text-sm text-gray-400">
+            <div className="size-2 rounded-full bg-gray-400 animate-bounce" />
+            <div className="size-2 rounded-full bg-gray-400 animate-bounce delay-150" />
+            <div className="size-2 rounded-full bg-gray-400 animate-bounce delay-300" />
+            <span>AI is typing...</span>
+          </div>
+        </div>
+      </section>
 
-        <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#1E5EFF] text-white text-xs px-3 py-1 rounded-full">
-          Most Popular
-        </span>
+      <section className="px-6 py-24 md:px-16">
+        <div className="mx-auto max-w-4xl">
+          <h2 className="text-center text-3xl font-semibold">FAQ</h2>
 
-        <h3 className="text-xl font-semibold">Pro</h3>
+          <div className="mt-12 space-y-6">
+            {faqItems.map((item) => (
+              <div key={item.q} className="rounded-xl border bg-white p-6">
+                <h3>{item.q}</h3>
+                <p className="mt-2 text-sm text-gray-600">{item.a}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-        <p className="mt-4 text-3xl font-bold text-[#1E5EFF]">₹2999</p>
-        <p className="text-sm text-gray-500">per month</p>
-
-        <ul className="mt-6 space-y-3 text-sm text-gray-600 flex-1">
-          <li>✔ Instagram Automation</li>
-          <li>✔ Comment → DM</li>
-          <li>✔ Custom Replies</li>
-          <li>✔ CRM + Leads Dashboard</li>
-          <li>✔ AI Smart Replies</li>
-          <li>✔ Chat Panel</li>
-          <li>✔ AI Follow-Ups</li>
-          <li>✔ Custom Follow-Ups</li>
-        </ul>
-
-        <button className="mt-8 w-full py-3 rounded-xl bg-[#1E5EFF] text-white hover:bg-[#0B2A5B] transition">
-          Upgrade Now
-        </button>
-      </div>
-
-      {/* ELITE */}
-      <div className="p-8 rounded-2xl border bg-white hover:shadow-xl transition flex flex-col">
-        <h3 className="text-xl font-semibold">Elite</h3>
-
-        <p className="mt-4 text-3xl font-bold">₹4999</p>
-        <p className="text-sm text-gray-500">Advanced plan</p>
-
-        <ul className="mt-6 space-y-3 text-sm text-gray-600 flex-1">
-          <li>✔ Instagram Automation</li>
-          <li>✔ Comment → DM</li>
-          <li>✔ Custom Replies</li>
-          <li>✔ CRM + Leads Dashboard</li>
-          <li>✔ AI Smart Replies</li>
-          <li>✔ Chat Panel</li>
-          <li>✔ AI Follow-Ups</li>
-          <li>✔ Custom Follow-Ups</li>
-          <li>✔ Booking & Scheduling</li>
-          <li>✔ Advanced AI Optimization</li>
-        </ul>
-
-        <button className="mt-8 w-full py-3 rounded-xl border hover:bg-gray-100 transition">
-          Get Started
-        </button>
-      </div>
-
-    </div>
-  </div>
-</section>
-      {/* ================= CTA ================= */}
-{/* ================= CTA ================= */}
-<section className="px-6 md:px-16 py-20 bg-gradient-to-r from-[#0B2A5B] via-[#1E5EFF] to-[#4DA3FF] text-white text-center relative overflow-hidden">
-  
-  {/* Glow background */}
-  <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[500px] h-[500px] bg-white/10 blur-3xl rounded-full"></div>
-
-  <div className="relative max-w-3xl mx-auto">
-
-    {/* Heading */}
-    <h2 className="text-3xl md:text-4xl font-semibold leading-tight">
-      Start Converting Leads Automatically
-    </h2>
-
-    {/* Subtext */}
-    <p className="mt-4 text-white/80 text-sm md:text-base">
-      Automate replies, follow-ups, and conversions — all in one place.
-    </p>
-
-    {/* Buttons */}
-    <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
-      
-      <Link
-          href="https://app.automexiaai.in/auth/register"
-          className="px-8 py-4 border border-white/40 rounded-xl hover:bg-white/10 transition">
-            Start Free Trial
-      </Link>
-
-      <button
-      onClick={() => setOpenDemo(true)}
-      className="px-8 py-4 border border-white/40 rounded-xl hover:bg-white/10 transition">
-        Book Demo
-      </button>
-
-    </div>
-
-    {/* Legal */}
-    <p className="mt-6 text-xs md:text-sm text-white/70 leading-relaxed">
-      By continuing, you agree to our{" "}
-      <a href="/terms" className="underline hover:text-white">
-        Terms
-      </a>{" "}
-      and{" "}
-      <a href="/privacy-policy" className="underline hover:text-white">
-        Privacy Policy
-      </a>.
-    </p>
-
-  </div>
-</section>
-
-
-    {/* ================= POPUP ================= */}
-{openDemo && (
-  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
-
-    <div className="bg-white rounded-2xl w-full max-w-md p-6 relative shadow-xl">
-
-      <button
-        onClick={() => setOpenDemo(false)}
-        className="absolute top-4 right-4 text-gray-400 hover:text-black"
+      <section
+        id="pricing"
+        className="bg-gradient-to-b from-white to-blue-50/40 px-6 py-28 md:px-16"
       >
-        ✕
-      </button>
+        <div className="mx-auto max-w-7xl text-center">
+          <h2 className="text-3xl font-semibold md:text-4xl">
+            Simple, Transparent Pricing
+          </h2>
+          <p className="mt-4 text-gray-600">
+            Choose the plan that fits your growth stage.
+          </p>
 
-      <h2 className="text-2xl font-semibold text-center">
-        Book a Demo
-      </h2>
+          <div className="mt-20 grid items-stretch gap-8 md:grid-cols-3">
+            {pricingPlans.map((plan) => (
+              <div
+                key={plan.name}
+                className={`relative flex flex-col rounded-2xl bg-white p-8 transition ${
+                  plan.featured
+                    ? "scale-105 border-2 border-[#1E5EFF] shadow-xl"
+                    : "border hover:shadow-xl"
+                }`}
+              >
+                {plan.featured ? (
+                  <span className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-[#1E5EFF] px-3 py-1 text-xs text-white">
+                    Most Popular
+                  </span>
+                ) : null}
 
-      <p className="text-sm text-gray-500 text-center mt-2">
-        Get a quick walkthrough of how Automexia AI can grow your business 🚀
-      </p>
+                <h3 className="text-xl font-semibold">{plan.name}</h3>
+                <p
+                  className={`mt-4 text-3xl font-bold ${
+                    plan.featured ? "text-[#1E5EFF]" : ""
+                  }`}
+                >
+                  {plan.price}
+                </p>
+                <p className="text-sm text-gray-500">{plan.note}</p>
 
-      <form
-        onSubmit={async (e) => {
-          e.preventDefault();
+                <ul className="mt-6 flex-1 space-y-3 text-sm text-gray-600">
+                  {plan.items.map((item) => (
+                    <li key={item}>+ {item}</li>
+                  ))}
+                </ul>
 
-          const form = new FormData(e.currentTarget);
+                <a
+                  href={APP_URL}
+                  target="_blank"
+                  rel="noreferrer"
+                  className={`mt-8 inline-flex w-full items-center justify-center rounded-xl py-3 transition ${
+                    plan.featured
+                      ? "bg-[#1E5EFF] text-white hover:bg-[#0B2A5B]"
+                      : "border hover:bg-gray-100"
+                  }`}
+                >
+                  {plan.cta}
+                </a>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
-          const formData = {
-            name: form.get("name"),
-            email: form.get("email"),
-            phone: form.get("phone"),
-            business: form.get("business"),
-          };
+      <section className="relative overflow-hidden bg-gradient-to-r from-[#0B2A5B] via-[#1E5EFF] to-[#4DA3FF] px-6 py-20 text-center text-white md:px-16">
+        <div className="absolute left-1/2 top-0 size-[500px] -translate-x-1/2 rounded-full bg-white/10 blur-3xl" />
 
-          await fetch("/api/demo", {
-            method: "POST",
-            body: JSON.stringify(formData),
-          });
+        <div className="relative mx-auto max-w-3xl">
+          <h2 className="text-3xl font-semibold leading-tight md:text-4xl">
+            Start Converting Leads Automatically
+          </h2>
 
-          alert("Demo request submitted 🚀");
-          setOpenDemo(false);
-        }}
-        className="mt-6 space-y-4"
-      >
+          <p className="mt-4 text-sm text-white/80 md:text-base">
+            Automate replies, follow-ups, and conversions all in one place.
+          </p>
 
-        <input
-          name="name"
-          type="text"
-          placeholder="Your Name"
-          required
-          className="w-full border px-4 py-3 rounded-xl"
-        />
+          <div className="mt-8 flex flex-col justify-center gap-4 sm:flex-row">
+            <a
+              href={APP_URL}
+              target="_blank"
+              rel="noreferrer"
+              className="rounded-xl border border-white/40 px-8 py-4 transition hover:bg-white/10"
+            >
+              Start Free Trial
+            </a>
 
-        <input
-          name="email"
-          type="email"
-          placeholder="Your Email"
-          required
-          className="w-full border px-4 py-3 rounded-xl"
-        />
+            <button
+              type="button"
+              onClick={() => setOpenDemo(true)}
+              className="rounded-xl border border-white/40 px-8 py-4 transition hover:bg-white/10"
+            >
+              Book Demo
+            </button>
+          </div>
 
-        <input
-          name="phone"
-          type="tel"
-          placeholder="Phone Number"
-          required
-          className="w-full border px-4 py-3 rounded-xl"
-        />
+          <p className="mt-6 text-xs leading-relaxed text-white/70 md:text-sm">
+            By continuing, you agree to our{" "}
+            <Link href="/terms" className="underline hover:text-white">
+              Terms
+            </Link>{" "}
+            and{" "}
+            <Link href="/privacy-policy" className="underline hover:text-white">
+              Privacy Policy
+            </Link>
+            .
+          </p>
+        </div>
+      </section>
 
-        <input
-          name="business"
-          type="text"
-          placeholder="Business / Instagram Page (optional)"
-          className="w-full border px-4 py-3 rounded-xl"
-        />
+      {openDemo ? (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
+          <div className="relative w-full max-w-md rounded-2xl bg-white p-6 shadow-xl">
+            <button
+              type="button"
+              onClick={() => setOpenDemo(false)}
+              className="absolute right-4 top-4 text-gray-400 hover:text-black"
+            >
+              x
+            </button>
 
-        <button
-          type="submit"
-          className="w-full py-3 bg-[#1E5EFF] text-white rounded-xl hover:bg-[#0B2A5B] transition"
-        >
-          Book Demo
-        </button>
+            <h2 className="text-center text-2xl font-semibold">Book a Demo</h2>
 
-      </form>
+            <p className="mt-2 text-center text-sm text-gray-500">
+              Get a quick walkthrough of how Automexia AI can grow your
+              business.
+            </p>
 
-    </div>
-  </div>
-)}
+            <form
+              onSubmit={async (e) => {
+                e.preventDefault();
+
+                const form = new FormData(e.currentTarget);
+                const formData = {
+                  name: form.get("name"),
+                  email: form.get("email"),
+                  phone: form.get("phone"),
+                  business: form.get("business"),
+                };
+
+                await fetch("/api/demo", {
+                  method: "POST",
+                  body: JSON.stringify(formData),
+                });
+
+                alert("Demo request submitted.");
+                setOpenDemo(false);
+              }}
+              className="mt-6 space-y-4"
+            >
+              <input
+                name="name"
+                type="text"
+                placeholder="Your Name"
+                required
+                className="w-full rounded-xl border px-4 py-3"
+              />
+
+              <input
+                name="email"
+                type="email"
+                placeholder="Your Email"
+                required
+                className="w-full rounded-xl border px-4 py-3"
+              />
+
+              <input
+                name="phone"
+                type="tel"
+                placeholder="Phone Number"
+                required
+                className="w-full rounded-xl border px-4 py-3"
+              />
+
+              <input
+                name="business"
+                type="text"
+                placeholder="Business / Instagram Page (optional)"
+                className="w-full rounded-xl border px-4 py-3"
+              />
+
+              <button
+                type="submit"
+                className="w-full rounded-xl bg-[#1E5EFF] py-3 text-white transition hover:bg-[#0B2A5B]"
+              >
+                Book Demo
+              </button>
+            </form>
+          </div>
+        </div>
+      ) : null}
     </main>
   );
 }
