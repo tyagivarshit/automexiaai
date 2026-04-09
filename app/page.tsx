@@ -56,7 +56,7 @@ useEffect(() => {
             </nav>
 
           <Link
-          href="https://www.automexiaai.in/auth/register"
+          href="https://app.automexiaai.in/auth/register"
           className="px-4 py-2 bg-[#1E5EFF] text-white rounded-lg hover:bg-[#0B2A5B] transition">
             Get Started
           </Link>
@@ -82,7 +82,7 @@ useEffect(() => {
 
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <Link
-              href="https://www.automexiaai.in/auth/register"
+              href="https://app.automexiaai.in/auth/register"
               className="px-4 py-2 bg-[#1E5EFF] text-white rounded-lg hover:bg-[#0B2A5B] transition">
                 Start Free Trial
               </Link>
@@ -458,7 +458,7 @@ useEffect(() => {
     <div className="mt-8 flex flex-col sm:flex-row gap-4 justify-center">
       
       <Link
-          href="https://www.automexiaai.in/auth/register"
+          href="https://app.automexiaai.in/auth/register"
           className="px-8 py-4 border border-white/40 rounded-xl hover:bg-white/10 transition">
             Start Free Trial
       </Link>
